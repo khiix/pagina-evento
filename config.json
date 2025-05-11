@@ -1,0 +1,14 @@
+[
+  {
+    "path": "HTML.html",
+    "language": "css",
+    "instruction": "Modify the CSS rule for .collage-container img to make the width 30% and height auto for responsiveness.",
+    "codeEdit": "    .collage-container img {\n    width: 30%; /* Ancho fijo para las imágenes (ajusta según necesites) */\n    height: auto; /* Mantiene la proporción de la imagen */\n    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */\n    border: 1px solid #f3c7df; /* Borde inicial */\n    box-shadow: 2px 2px 5px rgb(255, 0, 255); /* Sombra suave inicial */\n    transition: transform 0.3s ease; /* Añade una transición suave para el tamaño */\n    z-index: 1; /* Asegura que la imagen esté en una capa */\n    position: relative; /* Necesario para que z-index y pseudo-elementos funcionen */\n}"
+  },
+  {
+    "path": "HTML.html",
+    "language": "css",
+    "instruction": "Modify the CSS rule for .collage-container to change the top margin from 200px to 20px.",
+    "codeEdit": "    justify-content: center; /* Centra las imágenes horizontalmente */\n    margin-top: 20px; /* Espacio encima del collage */\n}"
+  }
+]
