@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bliss Events - Alicante</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400;600&display=swap"
+            rel="stylesheet">
+    <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7e3f6;
+      color: #333;
+    }
+
+    header {
+      background: #f6ddf7;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header img {
+      width: 150px;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #d88db5;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgb(255, 255, 255);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 3px 8px rgb(230, 66, 245);
+      /* Eliminamos la animación border-glow de aquí si no la quieres en la navbar */
+      /* animation: border-glow 1.5s infinite alternate; */
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #d88db5;
+    }
+
+    .navbar .logo img {
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    .navbar nav a {
+      color: #555;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.active {
+      color: #d88db5;
+      border-bottom: 2px solid #d88db5;
+      border-color: #d88db5;
+    }
+
+    .navbar .search {
+      font-size: 1.2em;
+      color: #999;
+      cursor: pointer;
+        padding: 5px;
+        padding-left: 15px;
+        border-radius: 5px;
+        box-shadow: #d88db5 0px 0px 5px;
+        border: 2px solid #d88db5;
+        border-color: #d88db5;
+    }
+
+    .hero {
+      background-image: url('https://source.unsplash.com/1600x600/?wedding,event');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 10px #000;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5em;
+      padding: 20px;
+    }
+
+    section {
+      padding: 20px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h3 {
+      color: #d88db5;
+      margin-bottom: 20px;
+    }
+    details {
+      margin-bottom: px;
+      background: #f8f0f9;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      color: #b85798;
+      margin-bottom: 10px;
+    }
+
+    .espacio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 10px 0;
+  background: #fff6fb;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f3c7df;
+}
+
+.espacio .info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.espacio .nombre {
+  font-weight: 600;
+}
+
+.espacio .precio {
+  font-weight: bold;
+  color: #b85798;
+  margin-left: auto;
+}
+
+    .espacio img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #f3f3f3;
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    .collage-container {
+    display: flex; /* Usa Flexbox para alinear las imágenes */
+    flex-wrap: wrap; /* Permite que las imágenes salten a la siguiente línea si no caben */
+    gap: 0px; /* Espacio entre las imágenes */
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    margin-top: 20px; /* Espacio encima del collage */
+}
+
+.collage-container img {
+    width: 30%; /* Ancho fijo para las imágenes (ajusta según necesites) */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border: 1px solid #f3c7df; /* Borde inicial */
+    box-shadow: 2px 2px 5px rgb(255, 0, 255); /* Sombra suave inicial */
+    transition: transform 0.3s ease; /* Añade una transición suave para el tamaño */
+    z-index: 1; /* Asegura que la imagen esté en una capa */
+    position: relative; /* Necesario para que z-index y pseudo-elementos funcionen */
+}
+
+/* Nuevo: Pseudo-elemento para el efecto de luz en el borde */
+.collage-container img::before {
+    content: '';
+    position: absolute;
+    /* Posiciona el pseudo-elemento ligeramente fuera para cubrir el borde */
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    /* Usa un gradiente cónico para el efecto de barrido de luz */
+    background: conic-gradient(from 0deg, transparent 0%, #ff0088 10%, transparent 20%, transparent 100%);
+    background-size: cover; /* Cubre el área del pseudo-elemento */
+    z-index: 11; /* Por encima de la imagen */
+    pointer-events: none; /* Permite interactuar con la imagen debajo */
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Transición suave para mostrar/ocultar */
+    border-radius: inherit; /* Hereda el border-radius si la imagen lo tiene */
+
+    /* Máscara para mostrar el gradiente solo en el área del borde */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude; /* Para navegadores Webkit */
+    mask-composite: exclude; /* Propiedad estándar */
+}
+
+/* Nuevo: Keyframes para la animación de rotación */
+@keyframes rotate-border {
+  to {
+    transform: rotate(360deg); /* Rota el pseudo-elemento 360 grados */
+  }
+}
+
+/* Modificado: Estilos al pasar el ratón por encima de la imagen */
+.collage-container img:hover {
+    transform: scale(1.2); /* Mantiene el agrandamiento */
+    z-index: 10; /* Asegura que la imagen hovered esté por encima */
+    border: 1px solid #ff0088; /* Cambia el color del borde si lo deseas */
+    /* Puedes mantener o eliminar la sombra en hover */
+    box-shadow: rgb(255, 66, 255) 10px 50px 100px;
+    /* Eliminamos la animación de box-shadow anterior */
+    animation: none;
+}
+
+/* Nuevo: Muestra el pseudo-elemento y aplica la animación al pasar el ratón */
+.collage-container img:hover::before {
+    opacity: 1; /* Muestra el pseudo-elemento */
+    animation: rotate-border 4s linear infinite; /* Aplica la animación de rotación */
+}
+
+/* Eliminamos la definición de la animación border-glow si ya no se usa */
+@keyframes border-glow {
+  0% {
+    box-shadow: 0 0 0 0 #ff0088;
+  }
+  100% {
+    box-shadow: 0 0 10px 5px #ff0088;
+  }
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Bliss">
+                Bliss Events
+            </div>
+            <nav>
+                <a href="#" class="active">Inicio</a>
+                <a href="#servicios">Proveedores</a>
+                <a href="#galeria">Espacios</a>
+                <a href="#blog">Tipos de eventos</a>
+                <a href="#sobre">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <input type="text" class="search" placeholder="Buscar...🔍">
+        </div>
+        <div class="hero">
+
+            <!-- Aquí empieza el collage de fotos -->
+            <div class="collage-container">
+                <img src="collage/1551108267663.jpeg"
+                    alt="Descripción de la foto 1">
+                <img src="collage/Boda-en-Santa-Marta-Conoce-Magdalena.jpg"
+                    alt="Descripción de la foto 2">
+                <img
+                    src="collage/Evento-corporativo-e1661944165280-1900x1069.jpg"
+                    alt="Descripción de la foto 3">
+                <img
+                    src="collage/Header Image BLOG ES - CON Logo (ES)  (5).webp"
+                    alt="Descripción de la foto 3">
+                <img src="collage/menu-especial-comuniones.webp"
+                    alt="Descripción de la foto 3">
+                <img
+                    src="collage/tendencias-2018-eventos-venuesplace-640x356.jpg"
+                    alt="Descripción de la foto 3">
+            </div>
+            <!-- Aquí termina el collage de fotos -->
+        </div>
+        <br><br><br><br><br><br>
+
+        <section id="servicios">
+            <h3>Proveedores</h3>
+            <details>
+                <summary>Ver proveedores</summary>
+                <div class="espacio">
+                    <img src="pro/restaurante.png"
+                        alt="Restaurantes">
+                    <span>Restaurantes</span>
+                </div>
+                <div class="espacio">
+                    <img src="pro/catering.jpg"
+                        alt="Catering">
+                    <span>Catering</span>
+                </div>
+                <div class="espacio">
+                    <img src="pro/musica.jpg"
+                        alt="Música">
+                    <span>Música</span>
+                </div>
+                <div class="espacio">
+                    <img
+                        src="pro/decoracion.jpg"
+                        alt="Decoración">
+                    <span>Decoración</span>
+                </div>
+                <div class="espacio">
+                    <img src="pro/entre.png"
+                        alt="Entretenimiento">
+                    <span>Entretenimiento</span>
+                </div>
+                <div class="espacio">
+                    <img
+                        src="pro/foto.png"
+                        alt="Fotografía">
+                    <span>Fotografía</span>
+                </div>
+            </details>
+        </section>
+
+        <section id="galeria">
+            <h3>Espacios</h3>
+            <details>
+                <summary>Ver espacios disponibles</summary>
+                <div class="espacio">
+                    <img src="espacios/Apartamento Paradisun.png"
+                        alt="Apartamento Paradisun">
+                    <div class="info">
+                        <span class="nombre">Apartamento Paradisun</span>
+                        <span class="precio">850 €</span>
+                    </div>
+                </div>
+                <div class="espacio">
+                    <img src="espacios/Castillo santa barbara.png"
+                        alt="Castillo Santa Bárbara">
+                    <div class="info">
+                        <span class="nombre">Castillo Santa Bárbara</span>
+                        <span class="precio">2.500 €</span>
+                    </div>
+                </div>
+                <div class="espacio">
+                    <img src="espacios/Finaca Fun West.png"
+                        alt="Finaca Fun West">
+                    <div class="info">
+                        <span class="nombre">Finaca Fun West</span>
+                        <span class="precio">1.200 €</span>
+                    </div>
+                </div>
+                <div class="espacio">
+                    <img src="espacios/Finca El Limonar.png"
+                        alt="Finca El Limonar">
+                    <div class="info">
+                        <span class="nombre">Finca El Limonar</span>
+                        <span class="precio">1.800 €</span>
+                    </div>
+                </div>
+                <div class="espacio">
+                    <img src="espacios/Hotel asia garden.png"
+                        alt="Hotel Asia Garden">
+                    <div class="info">
+                        <span class="nombre">Hotel Asia Garden</span>
+                        <span class="precio">3.200 €</span>
+                    </div>
+                </div>
+                <div class="espacio">
+                    <img src="espacios/unnamed.png"
+                        alt="Vivood Hotel">
+                    <div class="info">
+                        <span class="nombre">Vivood Hotel</span>
+                        <span class="precio">2.700 €</span>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <section id="blog">
+            <h3>Tipos de eventos</h3>
+            <details>
+                <summary>Ver tipos de eventos</summary>
+                <div class="espacio">
+                    <img src="eventos/boda.jpg "
+                        alt="Bodas">
+                    <span>Bodas</span>
+                </div>
+                <div class="espacio">
+                    <img src="eventos/eventoCorp.png"
+                        alt="Cumpleaños">
+                    <span>Eventos Corporativos</span>
+                </div>
+                <div class="espacio">
+                    <img src="eventos/fiesta.png"
+                        alt="Fiestas">
+                    <span>Fiestas privadas</span>
+                </div>
+            </section>
+
+            <section id="sobre">
+                <h3>Sobre Nosotros</h3>
+                <p>En Bliss Events, transformamos tus visiones en celebraciones inolvidables. Somos un equipo apasionado con sede en
+                    Alicante, dedicado a la planificación y gestión integral de eventos. Desde bodas de ensueño y eventos corporativos
+                    impecables hasta fiestas privadas vibrantes, nos encargamos de cada detalle con creatividad y profesionalismo. Nuestra
+                    misión es superar tus expectativas y crear momentos mágicos que perduren para siempre.
+                </p>
+            </section>
+
+            <section id="contacto">
+                <h3>Contacto</h3>
+                <p>Email: atencionCliente@blissevents.com<br>Teléfono: +34 600
+                    000
+                    000</p>
+            </section>
+
+            <footer>
+                &copy; 2025 Bliss Events - Alicante. Todos los derechos
+                reservados.
+            </footer>
+        </body>
+    </html>
